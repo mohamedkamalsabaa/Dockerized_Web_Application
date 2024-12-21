@@ -4,14 +4,14 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'mohamedkamalsabaa/final-project:latest' // Adjust the Docker image name if needed
         GITHUB_REPO = 'https://github.com/mohamedkamalsabaa/ODC-final-project.git'
-        DOCKERHUB_CREDENTIALS = 'dockerhub-creds' // Jenkins credential ID for Docker Hub
-        GITHUB_CREDENTIALS = 'github-creds' // Jenkins credential ID for GitHub
+        DOCKERHUB_CREDENTIALS = 'dckr_pat_In9lkDf0N7S39MP7f3jR4o0p2LY' // Jenkins credential ID for Docker Hub
+        GITHUB_CREDENTIALS = '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' // Jenkins credential ID for GitHub
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                // Pull code from the new GitHub repository
+                // Pull code from the new GitHub repository using credentials
                 git credentialsId: "${GITHUB_CREDENTIALS}", url: "${GITHUB_REPO}"
             }
         }
@@ -30,7 +30,7 @@ pipeline {
         stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
-                    // Push Docker image to Docker Hub
+                    // Push Docker image to Docker Hub with credentials
                     withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh """
                         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
