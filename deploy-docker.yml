@@ -1,0 +1,46 @@
+---
+- name: Deploy Docker Container on Vagrant Machines
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update apt and install dependencies
+      apt:
+        update_cache: yes
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+
+    - name: Add Docker GPG key
+      shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/trusted.gpg.d/docker.asc
+
+    - name: Add Docker APT repository
+      shell: echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Pull Docker image from Docker Hub
+      docker_image:
+        name: yourusername/repository_name  # Replace with your Docker image name
+        source: pull
+
+    - name: Run the Docker container
+      docker_container:
+        name: my_web_app  # Name the container
+        image: yourusername/repository_name  # Replace with your Docker image name
+        state: started
+        restart_policy: always
+        published_ports:
+          - "5000:5000"  # Map container's port 5000 to host's port 5000
