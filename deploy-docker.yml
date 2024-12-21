@@ -33,13 +33,13 @@
 
     - name: Pull Docker image from Docker Hub
       docker_image:
-        name: yourusername/repository_name  # Replace with your Docker image name
+        name: mohamedk15/final-project  # Updated Docker image name
         source: pull
 
     - name: Run the Docker container
       docker_container:
         name: my_web_app  # Name the container
-        image: yourusername/repository_name  # Replace with your Docker image name
+        image: mohamedk15/final-project  # Updated Docker image name
         state: started
         restart_policy: always
         published_ports:
