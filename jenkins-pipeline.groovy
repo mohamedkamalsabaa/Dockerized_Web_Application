@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Pull code from GitHub repository using Jenkins credentials
-                git credentialsId: "${GITHUB_CREDENTIALS}", url: "${GITHUB_REPO}", branch: 'main'
+                git credentialsId: "${GITHUB_CREDENTIALS}", url: "${GITHUB_REPO}", branch: 'main'  // Ensure 'main' is specified here
             }
         }
 
