@@ -4,8 +4,8 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'mohamedk15/final-project:latest' // Updated Docker image name
         GITHUB_REPO = 'https://github.com/mohamedkamalsabaa/ODC-final-project.git' // GitHub repository URL
-        DOCKERHUB_CREDENTIALS = 'dckr_pat_In9lkDf0N7S39MP7f3jR4o0p2LY' // Jenkins credential ID for Docker Hub
-        GITHUB_CREDENTIALS = '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' // Jenkins credential ID for GitHub
+        DOCKERHUB_CREDENTIALS = 'docker-hub-creds' // Jenkins credential ID for Docker Hub
+        GITHUB_CREDENTIALS = 'github-credentials' // Jenkins credential ID for GitHub
     }
 
     stages {
