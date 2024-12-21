@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'mohamedkamalsabaa/final-project:latest' // Adjust the Docker image name if needed
-        GITHUB_REPO = 'https://github.com/mohamedkamalsabaa/ODC-final-project.git'
+        DOCKER_IMAGE = 'mohamedk15/final-project:latest' // Updated Docker image name
+        GITHUB_REPO = 'https://github.com/mohamedkamalsabaa/ODC-final-project.git' // GitHub repository URL
         DOCKERHUB_CREDENTIALS = 'dckr_pat_In9lkDf0N7S39MP7f3jR4o0p2LY' // Jenkins credential ID for Docker Hub
         GITHUB_CREDENTIALS = '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' // Jenkins credential ID for GitHub
     }
@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                // Pull code from the new GitHub repository using credentials
+                // Pull code from GitHub repository using Jenkins credentials
                 git credentialsId: "${GITHUB_CREDENTIALS}", url: "${GITHUB_REPO}"
             }
         }
