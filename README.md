@@ -1,6 +1,6 @@
-# Final Project - Dockerized Web Application
+#Dockerized Web Application
 
-This project contains a simple Python web application that is Dockerized and can be deployed to remote machines using Ansible and Jenkins.
+This project contains a Dockerized Python web application that can be deployed to remote machines using Ansible and Jenkins.
 
 ## Setup
 
