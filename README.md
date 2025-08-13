@@ -48,7 +48,3 @@ ansible-playbook -i inventory/hosts playbooks/deploy.yml
 - **Python** - Web application
 - **Ansible** - Configuration management
 - **Jenkins** - CI/CD pipeline
-
----
-
-⭐ Star this repo if you find it useful!
